@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+  --shadow-center: 0 0 12px -2px rgb(0 0 0 / 0.05);
+  --animate-pulse-fast: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@plugin "daisyui" {
+  themes: dark --default;
+}
+
+/* ==========================================================================
+   GLOBAL CANVAS & BACKGROUND OVERRIDES (#050505 PITCH BLACK)
+   ========================================================================== */
+html,
+body,
+:root,
+[data-theme],
+[data-theme="dark"],
+[data-theme="light"],
+main {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   DEBUG CONTRACT CARDS & CONTAINERS (#111111 CHARCOAL)
+   ========================================================================== */
+div[class*="bg-base-"],
+div[class*="bg-secondary"],
+.bg-base-100,
+.bg-base-200,
+.bg-base-300,
+.bg-secondary,
+.card,
+.collapse,
+.collapse-title,
+.collapse-content {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border-color: #1a1a1a !important;
+}
+
+.debug-contracts-page .card {
+  background-color: #00e5ff !important;
+  color: #000000 !important;
+  border-color: #00e5ff !important;
+}
+
+.debug-contracts-page [class*="bg-sui-base-100"],
+.debug-contracts-page [class*="bg-sui-primary"] {
+  background-color: #00e5ff !important;
+  color: #000000 !important;
+  border-color: #00e5ff !important;
+}
+
+/* Dark borders across all contract panels */
+*,
+::after,
+::before,
+.border-base-300,
+.border-secondary,
+.border-base-200 {
+  border-color: #1a1a1a !important;
+}
+
+/* ==========================================================================
+   ELECTRIC CYAN (#00E5FF) ACCENT OVERRIDES
+   ========================================================================== */
+
+/* Primary Action & Read/Write Contract Buttons */
+button.btn-primary,
+.btn-primary,
+.btn-accent,
+a.btn-primary,
+button[class*="btn-primary"] {
+  background-color: #00e5ff !important;
+  color: #000000 !important;
+  border-color: #00e5ff !important;
+  font-weight: 700 !important;
+}
+
+button.btn-primary:hover,
+.btn-primary:hover {
+  background-color: #00b8cc !important;
+  border-color: #00b8cc !important;
+}
+
+/* Electric Cyan Badges & Type Indicators */
+.badge,
+.badge-primary,
+.badge-secondary,
+.badge-accent {
+  background-color: rgba(0, 229, 255, 0.12) !important;
+  color: #00e5ff !important;
+  border: 1px solid #00e5ff !important;
+}
+
+/* Tabs & Highlighted Text */
+.text-primary,
+.text-accent,
+.tab-active {
+  color: #00e5ff !important;
+  border-color: #00e5ff !important;
+}
+
+/* ==========================================================================
+   FORM INPUTS & FUNCTION PARAMETER FIELDS
+   ========================================================================== */
+input,
+textarea,
+select,
+.input,
+div[class*="input"] {
+  background-color: #050505 !important;
+  color: #ffffff !important;
+  border: 1px solid #1a1a1a !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #00e5ff !important;
+  border-color: #00e5ff !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #666666 !important;
+}
