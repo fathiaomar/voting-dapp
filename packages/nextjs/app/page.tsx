@@ -26,7 +26,10 @@ const Home: NextPage = () => {
     args: [connectedAddress],
   });
 
-  const { writeContractAsync: writeVotingAsync } = useScaffoldWriteContract("Voting");
+  // Updated object syntax for useScaffoldWriteContract
+  const { writeContractAsync: writeVotingAsync } = useScaffoldWriteContract({
+    contractName: "Voting",
+  });
 
   const totalCandidates = candidatesCount ? Number(candidatesCount) : 0;
 
@@ -56,7 +59,8 @@ const Home: NextPage = () => {
     }
   };
 
-  const handleAddCandidate = async (e: React.FormEvent) => {
+  // Updated Form Submission Event Type
+  const handleAddCandidate = async (e: React.SubmitEvent) => {
     e.preventDefault();
     if (!newCandidateName.trim()) return;
     try {
