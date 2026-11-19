@@ -75,4 +75,14 @@ contract Voting {
             totalVotes += candidates[i].voteCount;
         }
     }
+
+    /**
+     * @notice Returns all registered candidates and their current vote counts
+     */
+    function getAllCandidates() public view returns (Candidate[] memory allCandidates) {
+        allCandidates = new Candidate[](candidatesCount);
+        for (uint256 i = 1; i <= candidatesCount; i++) {
+            allCandidates[i - 1] = candidates[i];
+        }
+    }
 }
