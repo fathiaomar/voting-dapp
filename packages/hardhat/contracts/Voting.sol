@@ -58,4 +58,12 @@ contract Voting {
         require(_candidateId > 0 && _candidateId <= candidatesCount, "Invalid candidate ID.");
         return candidates[_candidateId];
     }
+
+    /**
+     * @notice Checks whether a given wallet address has already cast a vote
+     * @param _voter Address to check voting status for
+     */
+    function hasAddressVoted(address _voter) public view returns (bool) {
+        return hasVoted[_voter];
+    }
 }
