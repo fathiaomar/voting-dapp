@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+﻿// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
 contract Voting {
@@ -29,7 +29,7 @@ contract Voting {
      */
     function addCandidate(string memory _name) public {
         require(bytes(_name).length > 0, "Candidate name cannot be empty");
-        
+
         candidatesCount++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
 
@@ -48,5 +48,14 @@ contract Voting {
         candidates[_candidateId].voteCount++;
 
         emit Voted(msg.sender, _candidateId);
+    }
+
+    /**
+     * @notice Returns full details for a given candidate ID
+     * @param _candidateId The ID of the candidate to fetch
+     */
+    function getCandidate(uint256 _candidateId) public view returns (Candidate memory) {
+        require(_candidateId > 0 && _candidateId <= candidatesCount, "Invalid candidate ID.");
+        return candidates[_candidateId];
     }
 }
