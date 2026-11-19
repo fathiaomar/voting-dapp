@@ -302,3 +302,4 @@ const CandidateProposalCard = ({
 };
 
 export default Home;
+
