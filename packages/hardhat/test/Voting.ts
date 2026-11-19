@@ -52,4 +52,18 @@ describe("Voting", function () {
       "Invalid candidate ID."
     );
   });
+
+  it("returns all registered candidates with updated vote counts", async function () {
+    const [, voter] = await ethers.getSigners();
+    const voting = await ethers.deployContract("Voting");
+
+    await voting.connect(voter).vote(2n);
+
+    const candidates = await voting.getAllCandidates();
+    expect(candidates.length).to.equal(2);
+    expect(candidates[0].id).to.equal(1n);
+    expect(candidates[0].voteCount).to.equal(0n);
+    expect(candidates[1].id).to.equal(2n);
+    expect(candidates[1].voteCount).to.equal(1n);
+  });
 });
