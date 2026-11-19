@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState } from "react";
 import type { NextPage } from "next";
@@ -20,6 +20,11 @@ const Home: NextPage = () => {
     functionName: "candidatesCount",
   });
 
+  const { data: totalVotes } = useScaffoldReadContract({
+    contractName: "Voting",
+    functionName: "getTotalVotes",
+  });
+
   const { data: hasVoted } = useScaffoldReadContract({
     contractName: "Voting",
     functionName: "hasVoted",
@@ -32,6 +37,7 @@ const Home: NextPage = () => {
   });
 
   const totalCandidates = candidatesCount ? Number(candidatesCount) : 0;
+  const activeVotes = totalVotes ? Number(totalVotes) : 0;
 
   // --- Smooth Scroll & Tab Handlers ---
   const handleStartVotingClick = () => {
@@ -118,7 +124,7 @@ const Home: NextPage = () => {
         </div>
         <div className="bg-[#111111] border border-[#1A1A1A] p-5 rounded-xl">
           <p className="text-gray-400 text-sm">Active Votes</p>
-          <p className="text-3xl font-bold text-[#00FF88] mt-1">1</p>
+          <p className="text-3xl font-bold text-[#00FF88] mt-1">{activeVotes}</p>
         </div>
         <div className="bg-[#111111] border border-[#1A1A1A] p-5 rounded-xl">
           <p className="text-gray-400 text-sm">Voter Eligibility</p>
