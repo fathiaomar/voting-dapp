@@ -66,4 +66,13 @@ contract Voting {
     function hasAddressVoted(address _voter) public view returns (bool) {
         return hasVoted[_voter];
     }
+
+    /**
+     * @notice Returns the total number of votes cast across all candidates
+     */
+    function getTotalVotes() public view returns (uint256 totalVotes) {
+        for (uint256 i = 1; i <= candidatesCount; i++) {
+            totalVotes += candidates[i].voteCount;
+        }
+    }
 }
